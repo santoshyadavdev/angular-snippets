@@ -1,0 +1,49 @@
+---
+import Layout from "@layouts/Layout.astro";
+import BlogCard from "@components/BlogCard.astro";
+import Subscribe from "@components/Subscribe.astro";
+import { Icon } from "astro-icon";
+
+interface Frontmatter {
+  title: string;
+  pubDate: string;
+  description: string;
+}
+
+const metadata = {
+  title: "Astro Basic Blog Template",
+  description: "This is a blog template made with Astro and Tailwind. Made by Lance Ross",
+};
+
+let blogs = await Astro.glob<Frontmatter>("./posts/*.mdx");
+blogs = blogs.sort((a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf());
+---
+
+<Layout {...metadata}>
+  <section class="flex flex-col sm:flex-row justify-evenly items-center py-14">
+    <div class="w-32 m-5 md:m-10 my-10">
+      <Icon name="simple-icons:astro" class="w-32 overflow-hidden inline-flex" />
+    </div>
+    <header class="max-w-xl sm:order-first">
+      <h1 class="text-2xl sm:text-3xl font-bold mb-7 md:mb-5 text-center sm:text-left">Welcome to my Astro Blog Template</h1>
+      <p class="text-black dark:text-zinc-300 mb-5">I got bored and decided to create an Astro template from scratch. Hope you like it!</p>
+      <p class="text-black dark:text-zinc-300">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, debitis minima! Illo esse quod enim id deleniti, veritatis magnam dolorum non accusantium quam et nemo dolorem
+        aspernatur eligendi quidem est.
+      </p>
+    </header>
+  </section>
+  <section class="py-14">
+    <h1 class="text-2xl sm:text-3xl font-bold mb-5">Recent Posts</h1>
+    <p class="text-black dark:text-zinc-300 mb-2">Looking for all of my blog posts? Click the "posts" or the "Show more posts" link down below.</p>
+    <ul class="flex flex-col justify-center py-5">
+      {
+        blogs.length > 1 &&
+          blogs.slice(0, 2).map((post) => <BlogCard title={post.frontmatter.title} description={post.frontmatter.description} pubDate={post.frontmatter.pubDate} url={post.url} />)
+      }
+    </ul>
+    <div class="text-center dark:text-zinc-300 text-zinc-200 mt-5">
+      <a class="flex items-center dark:bg-zinc-800 bg-zinc-200 dark:ring-zinc-700 hover:ring-2 ring-zinc-300 transition-all dark:text-white flex-col m-2 p-2 rounded-xl text-black" href="/posts">Show more posts</a>
+    </div>
+  </section>
+</Layout>

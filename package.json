@@ -1,0 +1,28 @@
+{
+  "name": "basicblog",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro build && astro preview"
+  },
+  "devDependencies": {
+    "@astrojs/image": "^0.11.6",
+    "@astrojs/mdx": "^0.11.6",
+    "@astrojs/rss": "^1.2.1",
+    "@astrojs/sitemap": "^1.0.0",
+    "@astrojs/tailwind": "^2.1.3",
+    "@fontsource/fira-code": "^4.5.12",
+    "@fontsource/inter": "^4.5.14",
+    "@tailwindcss/typography": "^0.5.8",
+    "astro": "^1.7.2",
+    "astro-compress": "1.0.8",
+    "astro-icon": "^0.8.0",
+    "astro-layouts": "^0.0.6",
+    "remark-code-title": "^0.2.2",
+    "sharp": "^0.31.2",
+    "tailwind-scrollbar": "^2.0.1",
+    "tailwindcss": "^3.2.4"
+  }
+}

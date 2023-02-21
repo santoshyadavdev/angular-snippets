@@ -1,0 +1,28 @@
+---
+import Layout from "@layouts/Layout.astro";
+import BlogCard from "@components/BlogCard.astro";
+
+interface Frontmatter {
+  title: string;
+  pubDate: string;
+  description: string;
+}
+
+let blogs = await Astro.glob<Frontmatter>("./posts/*.mdx");
+blogs = blogs.sort((a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf());
+---
+
+<Layout title="Posts" description="hello world">
+  <section class="flex flex-col mt-8">
+    <h1 class="text-2xl sm:text-3xl font-bold mb-5">Posts</h1>
+    <h2 class="text-black dark:text-zinc-300 mb-5">
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam facilis a at in eaque deleniti cum blanditiis consectetur sequi facere, illo voluptate consequuntur repudiandae fugiat
+      libero. Magnam quos quas asperiores!
+    </h2>
+  </section>
+  <section>
+    <ul class="flex flex-col justify-center mb-8">
+      {blogs.map((post) => <BlogCard title={post.frontmatter.title} description={post.frontmatter.description} pubDate={post.frontmatter.pubDate} url={post.url} />)}
+    </ul>
+  </section>
+</Layout>

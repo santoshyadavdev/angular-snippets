@@ -1,0 +1,13 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { Icon } from "astro-icon";
+---
+
+<Layout title="404 Error" description="404 Error, probably not found..">
+  <section class="grid place-items-center text-center py-20">
+    <Icon name="simple-icons:astro" class="w-32 h-32 mb-10" />
+    <h1 class="text-6xl mb-5 font-semibold">404 Error</h1>
+    <h2 class="text-xl mb-5">Are you lost or looking for some easter eggs?</h2>
+    <a href="/" class="p-3 rounded-xl dark:bg-zinc-800 bg-zinc-300 text-black dark:text-zinc-300 m-2 ring-2 ring-opacity-0 ring-zinc-500 hover:ring-opacity-100 transition-all motion-reduce:transition-none">Go back to home</a>
+  </section>
+</Layout>

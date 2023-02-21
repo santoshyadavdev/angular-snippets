@@ -1,0 +1,96 @@
+---
+import "@fontsource/inter/variable.css";
+import "@fontsource/fira-code";
+import Header from "@components/Header.astro";
+
+let { pubDate } = Astro.props.content;
+const { frontmatter } = Astro.props;
+export interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  ImageAlt?: string;
+}
+
+const thisDate = new Date(pubDate).toLocaleDateString("en", {
+  dateStyle: "long",
+});
+pubDate = pubDate.split("T")[0];
+
+const ogImageParams = "./banner.png"
+
+const canonicalURL = new URL(Astro.url).href;
+---
+
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{frontmatter.title}</title>
+    <link rel="sitemap" href="/sitemap-index.xml">
+    <link rel="canonical" href={canonicalURL} />
+    <meta name="title" content={frontmatter.title} />
+    <meta name="description" content={frontmatter.description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={frontmatter.title} />
+    <meta property="og:description" content={frontmatter.description} />
+    <meta property="og:image" content={ogImageParams} />
+    <meta property="og:site_name" content="Astro Basic Blog Template" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta name="twitter:site" content="@lancerossdev" />
+    <meta name="twitter:creator" content="@lancerossdev" />
+    <meta property="twitter:title" content={frontmatter.title} />
+    <meta property="twitter:description" content={frontmatter.description} />
+    <meta property="twitter:image" content={ogImageParams} />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="author" content="Lance Ross" />
+    <script is:inline>
+      // credits to satnaing on github
+      const primaryColorScheme = "none";
+      const darkModeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const currentTheme = localStorage.getItem("theme");
+      let theme;
+      if (currentTheme) {
+        theme = currentTheme === "dark" ? "dark" : "";
+      } else {
+        if (primaryColorScheme === "dark" || (primaryColorScheme === "none" && darkModeMediaQuery)) {
+          theme = "dark";
+        } else if (primaryColorScheme === "light") {
+          theme = "";
+        } else {
+          theme = darkModeMediaQuery ? "dark" : "";
+        }
+      }
+      document.documentElement.className = theme;
+    </script>
+    <script src="@scripts/main.js"></script>
+  </head>
+  <body
+    class="font-inter dark:bg-zinc-900 text-lg sm:text-xl dark:text-white transition-colors selection:bg-sky-600/60 scrollbar-thin scrollbar-thumb-zinc-400 scrollbar-track-zinc-300 dark:scrollbar-thumb-zinc-600 dark:scrollbar-track-zinc-800"
+  >
+    <Header />
+    <main class="m-auto p-6 max-w-4xl">
+      <section class="prose sm:prose-xl dark:text-slate-200 prose-a:dark:text-blue-400 prose-a:no-underline prose-pre:scrollbar-thin prose-pre:scrollbar-thumb-zinc-400 prose-pre:scrollbar-track-zinc-300 prose-pre:dark:scrollbar-thumb-zinc-500 prose-pre:dark:scrollbar-track-zinc-700 dark:bg-zinc-900 hover:prose-a:underline prose-a:text-blue-700 dark:prose-invert prose-a:underline-offset-2 dark:bg-inherit px-3">
+        <header class="mb-5">
+          <h1 class="m-0 !text-4xl mb-7 dark:text-white">{frontmatter.title}</h1>
+          <nav class="flex flex-col sm:flex-row sm:space-x-3 text-base dark:text-zinc-400">
+            <time datetime={frontmatter.pubDate} class="mb-3 sm:mb-0">
+              {thisDate}
+            </time>
+          </nav>
+        </header>
+        <article>
+          <slot />
+        </article>
+        <footer class="flex flex-row justify-between mt-16 text-lg">
+          <a href="/posts" class="dark:text-blue-400 text-blue-600">Back to posts</a>
+        </footer>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+---
+import { Icon } from "astro-icon";
+
+const desktop = [
+  {
+    name: "Posts",
+    href: "/posts/",
+  },
+  {
+    name: "RSS",
+    href: "/rss.xml",
+  },
+];
+
+---
+
+<header class="dark:bg-zinc-900 bg-white max-w-4xl m-auto transition-colors">
+  <a href="/" class="text-lg sm:text-xl text-black dark:text-zinc-300 hover:dark:text-white transition-colors absolute m-8">basicblog</a>
+  <nav class="p-8 flex justify-end">
+    <ul class="flex justify-end items-center m-0 space-x-1">
+      {
+        desktop.map((item) => (
+          <li>
+            <a href ={item.href} class="hover:bg-zinc-300 dark:hover:bg-zinc-700 dark:text-zinc-300 text-black p-2 transition-colors rounded-lg">
+              {item.name}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <button aria-label="theme toggle" class="pointer theme-toggle ml-4">
+      <Icon name="eva:moon-outline" class="w-6 dark:text-white text-black transition-colors dark:hidden" />
+      <Icon name="akar-icons:sun" class="w-6 dark:text-white text-black transition-colors hidden dark:block" />
+    </button>
+  </nav>
+  
+</header>
