@@ -8,7 +8,7 @@ Follow the below steps to add a snippet to the website.
 
 - Go to pages -> snippets folder.
 - add a new mdx file with the name of the snippet.
-- add the following frontmatter to the file.
+- add the content in the format below.
 
 ```mdx
 ---
