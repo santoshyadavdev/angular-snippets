@@ -1,4 +1,4 @@
-# Angular Snippets 
+# Angular Snippets
 
 A website to find and share code snippets for Angular.
 
@@ -17,9 +17,9 @@ description: description of the snippet
 pubDate: (Dare) Feb 20, 2022
 contributedBy: "@TwitterHandle"
 ---
-import BlogImage from "@components/BlogImage.astro"
-import SourceMap from "@images/source-map.jpg"
 
+import BlogImage from "@components/BlogImage.astro";
+import SourceMap from "@images/source-map.jpg";
 
 Content of the snippet
 
@@ -27,18 +27,14 @@ We accept mdx syntax here.
 
 You can include code snippets like this.
 
-```json
 "sourceMap": {
-  "hidden": true,
+"hidden": true,
 }
-```
 
 and images like this.
 
 <BlogImage src={ImagePath} alt="hidden source map for production" />
-
 ```
-
 
 ## Tech Stack 🛠️
 
