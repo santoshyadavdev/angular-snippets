@@ -9,7 +9,7 @@ import codeTitle from "remark-code-title";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://basicblog.pages.dev",
+  site: "https://angular-snippets.dev",
   markdown: {
     extendDefaultPlugins: true,
     shikiConfig: {
@@ -20,7 +20,7 @@ export default defineConfig({
         astroLayouts,
         {
           default: "@layouts/Layout.astro",
-          posts: "@layouts/BlogLayout.astro",
+          snippets: "@layouts/BlogLayout.astro",
         },
       ],
       codeTitle,

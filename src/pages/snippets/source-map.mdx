@@ -1,0 +1,25 @@
+---
+title: Make source maps available for reporting tools
+description: "Make source maps available for reporting tools"
+pubDate: Feb 20, 2022
+contributedBy: "@SantoshYadavDev"
+---
+import BlogImage from "@components/BlogImage.astro"
+import SourceMap from "@images/source-map.jpg"
+
+Do you want to upload source-map to an reporting tool like 
+@datadoghq
+, but want to make sure no one can debug the code due to sourceMap
+
+
+---
+Set below property in build options, the source-map will not be mapped to the bundle, but you will get a source map.
+
+```json
+"sourceMap": {
+  "hidden": true,
+}
+```
+
+
+<BlogImage src={SourceMap} alt="hidden source map for production" />

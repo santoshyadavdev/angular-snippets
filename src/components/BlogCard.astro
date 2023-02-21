@@ -4,8 +4,9 @@ export interface Props {
   description: string;
   pubDate: string;
   url: string | undefined;
+  contributedBy: string;
 }
-let { title, description, pubDate, url } = Astro.props;
+let { title, description, pubDate, url, contributedBy } = Astro.props;
 const shortDate = new Date(pubDate).toLocaleDateString("en", {
   dateStyle: "short",
 });
