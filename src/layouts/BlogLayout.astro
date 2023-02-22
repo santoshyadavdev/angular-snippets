@@ -10,7 +10,6 @@ export interface Props {
   description?: string;
   image?: string;
   ImageAlt?: string;
-  githubRepoUrl?: string;
 }
 
 const thisDate = new Date(pubDate).toLocaleDateString("en", {
@@ -97,7 +96,6 @@ const canonicalURL = new URL(Astro.url).href;
             <span class="mb-3 sm:mb-0">
               {frontmatter.contributedBy}
             </span>
-            {frontmatter.repoUrl && <a href={frontmatter.repoUrl} target="_blank" class="dark:text-blue-400 text-blue-600 mb-3 sm:mb-0">Open Repo</a>}
           </nav>
         </header>
         <article>
