@@ -1,0 +1,43 @@
+---
+title: Angular 15 Standalone Components
+description: "Easy example of Angular 15 standalone components in existing projects"
+pubDate: Feb 22, 2022
+contributedBy: "@olierxleben"
+---
+
+Here is a quick example of how to use a standalone component in an existing NgModule. It demonstrates the interoperability and recent innovation of Angular v15.
+Let`s start with the component itself.
+
+```typescript
+import {Component} from '@angular/core';
+
+@Component({
+  selector: 'fancy-button',
+  standalone: true, // magic lies here
+
+  template: `
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+      <ng-content></ng-content>
+    </button>
+  `,
+})
+export class ButtonComponent {
+}
+```
+---
+And for the integration in an NgModule, you can just do the following:
+
+```typescript
+import {ButtonComponent} from "my-fancy-ui";
+...
+@NgModule({
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    HttpClientModule, RouterModule.forRoot(routes), ButtonComponent], // import like a module
+  providers: [],
+  bootstrap: [AppComponent],
+})
+export class AppModule {
+}
+```
