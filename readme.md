@@ -16,6 +16,7 @@ title: Tile of the snippet
 description: description of the snippet
 pubDate: (Dare) Feb 20, 2022
 contributedBy: "@TwitterHandle"
+repoUrl: "@GithubRepo"
 ---
 
 import BlogImage from "@components/BlogImage.astro";
