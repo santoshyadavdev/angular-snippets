@@ -23,7 +23,6 @@ blogs = blogs.sort(
     <ul class="flex flex-col justify-center mb-8">
       {
         blogs.map((post) => {
-          console.log("post", post);
           return (
             <BlogCard
               title={post.frontmatter.title}
