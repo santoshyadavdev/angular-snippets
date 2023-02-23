@@ -1,4 +1,7 @@
 # Angular Snippets
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 A website to find and share code snippets for Angular.
 
@@ -64,6 +67,20 @@ pnpm preview
 ## Contributors
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/olierxleben"><img src="https://avatars.githubusercontent.com/u/1403225?v=4?s=100" width="100px;" alt="Oliver Erxleben"/><br /><sub><b>Oliver Erxleben</b></sub></a><br /><a href="https://github.com/santoshyadavdev/angular-snipptes/commits?author=olierxleben" title="Code">💻</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
 
