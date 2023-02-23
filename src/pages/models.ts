@@ -3,5 +3,5 @@ export interface Frontmatter {
   pubDate: string;
   description: string;
   contributedBy: string;
-  tags: string;
+  tags?: string[];
 }
