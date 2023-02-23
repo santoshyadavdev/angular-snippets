@@ -1,4 +1,6 @@
 ---
+import TagsLine from "./TagsLine.astro";
+
 export interface Props {
   title: string;
   description: string;
@@ -26,15 +28,7 @@ url = url + "/";
       <h2 class="text-xl text-black dark:text-white">{title}</h2>
       <time class="shrink-0 text-base hidden sm:block">{shortDate}</time>
     </span>
-    <div class="flex flex-row text-sm gap-2">
-      {
-        tags.map((tag) => (
-          <span class="bg-slate-800 px-2 py-1 rounded text-white dark:bg-slate-400 ">
-            {tag}
-          </span>
-        ))
-      }
-    </div>
+    <TagsLine tags={tags} />
     <!-- You want a description? Just uncomment the code down below -->
     <!-- <p class="text-base text-black dark:text-zinc-300">{description}</p> -->
   </a>
