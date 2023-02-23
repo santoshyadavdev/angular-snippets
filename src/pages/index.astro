@@ -2,12 +2,7 @@
 import Layout from "@layouts/Layout.astro";
 import BlogCard from "@components/BlogCard.astro";
 import { Icon } from "astro-icon";
-interface Frontmatter {
-  title: string;
-  pubDate: string;
-  description: string;
-  contributedBy: string;
-}
+import { Frontmatter } from "./models";
 
 const metadata = {
   title: "Angular Snippets",
@@ -25,7 +20,7 @@ blogs = blogs.sort(
 <Layout {...metadata}>
   <section class="flex flex-col sm:flex-row justify-evenly items-center py-14">
     <div class="w-32 m-5 md:m-10 my-10">
-         <Icon class="h-8 md:h-12" name="simple-icons:angular" />
+      <Icon class="h-8 md:h-12" name="simple-icons:angular" />
     </div>
     <header class="max-w-xl sm:order-first">
       <h1
@@ -61,6 +56,7 @@ blogs = blogs.sort(
                 pubDate={post.frontmatter.pubDate}
                 url={post.url}
                 contributedBy={post.frontmatter.contributedBy}
+                tags={post.frontmatter.tags}
               />
             ))
       }

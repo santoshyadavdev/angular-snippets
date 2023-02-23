@@ -1,13 +1,7 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import BlogCard from "@components/BlogCard.astro";
-
-interface Frontmatter {
-  title: string;
-  pubDate: string;
-  description: string;
-  contributedBy: string;
-}
+import { Frontmatter } from "./models";
 
 let blogs = await Astro.glob<Frontmatter>("./snippets/*.mdx");
 blogs = blogs.sort(
@@ -28,15 +22,18 @@ blogs = blogs.sort(
   <section>
     <ul class="flex flex-col justify-center mb-8">
       {
-        blogs.map((post) => (
-          <BlogCard
-            title={post.frontmatter.title}
-            description={post.frontmatter.description}
-            pubDate={post.frontmatter.pubDate}
-            url={post.url}
-            contributedBy={post.frontmatter.contributedBy}
-          />
-        ))
+        blogs.map((post) => {
+          return (
+            <BlogCard
+              title={post.frontmatter.title}
+              description={post.frontmatter.description}
+              pubDate={post.frontmatter.pubDate}
+              url={post.url}
+              contributedBy={post.frontmatter.contributedBy}
+              tags={post.frontmatter.tags}
+            />
+          );
+        })
       }
     </ul>
   </section>

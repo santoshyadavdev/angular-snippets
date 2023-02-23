@@ -2,6 +2,7 @@
 import "@fontsource/inter/variable.css";
 import "@fontsource/fira-code";
 import Header from "@components/Header.astro";
+import TagsLine from "@components/TagsLine.astro";
 
 let { pubDate } = Astro.props.content;
 const { frontmatter } = Astro.props;
@@ -97,6 +98,9 @@ const canonicalURL = new URL(Astro.url).href;
               {frontmatter.contributedBy}
             </span>
           </nav>
+          <div class="mys-2">
+            <TagsLine tags={frontmatter.tags} />
+          </div>
         </header>
         <article>
           <slot />
