@@ -2,13 +2,7 @@
 import Layout from "@layouts/Layout.astro";
 import BlogCard from "@components/BlogCard.astro";
 import { Icon } from "astro-icon";
-interface Frontmatter {
-  title: string;
-  pubDate: string;
-  description: string;
-  contributedBy: string;
-  tags: string;
-}
+import { Frontmatter } from "./models";
 
 const metadata = {
   title: "Angular Snippets",
@@ -62,13 +56,7 @@ blogs = blogs.sort(
                 pubDate={post.frontmatter.pubDate}
                 url={post.url}
                 contributedBy={post.frontmatter.contributedBy}
-                tags={
-                  post.frontmatter.tags
-                    ? post.frontmatter.tags
-                        .split(",")
-                        .map((item) => item.trim())
-                    : []
-                }
+                tags={post.frontmatter.tags}
               />
             ))
       }

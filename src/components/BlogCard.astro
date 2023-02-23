@@ -5,13 +5,16 @@ export interface Props {
   pubDate: string;
   url: string | undefined;
   contributedBy: string;
-  tags: string[];
+  tags: string | null;
 }
 let { title, description, pubDate, url, contributedBy, tags } = Astro.props;
 const shortDate = new Date(pubDate).toLocaleDateString("en", {
   dateStyle: "short",
 });
 url = url + "/";
+
+// preprocess tags
+const tagsProcessed = tags ? tags.split(",").map((item) => item.trim()) : [];
 ---
 
 <li
@@ -28,7 +31,7 @@ url = url + "/";
     </span>
     <div class="flex flex-row text-sm gap-2">
       {
-        tags.map((tag) => (
+        tagsProcessed.map((tag) => (
           <span class="bg-slate-800 p-2 text-white dark:bg-slate-400 ">
             {tag}
           </span>
