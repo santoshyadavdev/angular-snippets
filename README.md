@@ -1,6 +1,6 @@
 # Angular Snippets
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 A website to find and share code snippets for Angular.
@@ -73,6 +73,7 @@ pnpm preview
   <tbody>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/olierxleben"><img src="https://avatars.githubusercontent.com/u/1403225?v=4?s=100" width="100px;" alt="Oliver Erxleben"/><br /><sub><b>Oliver Erxleben</b></sub></a><br /><a href="https://github.com/santoshyadavdev/angular-snipptes/commits?author=olierxleben" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/9kubczas4"><img src="https://avatars.githubusercontent.com/u/43759569?v=4?s=100" width="100px;" alt="Paweł Kubiak"/><br /><sub><b>Paweł Kubiak</b></sub></a><br /><a href="https://github.com/santoshyadavdev/angular-snipptes/commits?author=9kubczas4" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
