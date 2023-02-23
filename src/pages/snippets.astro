@@ -30,7 +30,7 @@ blogs = blogs.sort(
               pubDate={post.frontmatter.pubDate}
               url={post.url}
               contributedBy={post.frontmatter.contributedBy}
-              tags={post.frontmatter.tags || []}
+              tags={post.frontmatter.tags}
             />
           );
         })
