@@ -7,6 +7,7 @@ interface Frontmatter {
   pubDate: string;
   description: string;
   contributedBy: string;
+  tags: string;
 }
 
 let blogs = await Astro.glob<Frontmatter>("./snippets/*.mdx");
@@ -28,15 +29,23 @@ blogs = blogs.sort(
   <section>
     <ul class="flex flex-col justify-center mb-8">
       {
-        blogs.map((post) => (
-          <BlogCard
-            title={post.frontmatter.title}
-            description={post.frontmatter.description}
-            pubDate={post.frontmatter.pubDate}
-            url={post.url}
-            contributedBy={post.frontmatter.contributedBy}
-          />
-        ))
+        blogs.map((post) => {
+          console.log("post", post);
+          return (
+            <BlogCard
+              title={post.frontmatter.title}
+              description={post.frontmatter.description}
+              pubDate={post.frontmatter.pubDate}
+              url={post.url}
+              contributedBy={post.frontmatter.contributedBy}
+              tags={
+                post.frontmatter.tags
+                  ? post.frontmatter.tags.split(",").map((item) => item.trim())
+                  : []
+              }
+            />
+          );
+        })
       }
     </ul>
   </section>
