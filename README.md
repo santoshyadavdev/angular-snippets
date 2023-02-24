@@ -1,6 +1,6 @@
 # Angular Snippets
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 A website to find and share code snippets for Angular.
@@ -72,9 +72,10 @@ pnpm preview
 <table>
   <tbody>
     <tr>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/olierxleben"><img src="https://avatars.githubusercontent.com/u/1403225?v=4?s=100" width="100px;" alt="Oliver Erxleben"/><br /><sub><b>Oliver Erxleben</b></sub></a><br /><a href="https://github.com/santoshyadavdev/angular-snipptes/commits?author=olierxleben" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/9kubczas4"><img src="https://avatars.githubusercontent.com/u/43759569?v=4?s=100" width="100px;" alt="Paweł Kubiak"/><br /><sub><b>Paweł Kubiak</b></sub></a><br /><a href="https://github.com/santoshyadavdev/angular-snipptes/commits?author=9kubczas4" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/santoshyadavdev"><img src="https://avatars.githubusercontent.com/u/11923975?v=4?s=100" width="100px;" alt="Santosh Yadav"/><br /><sub><b>Santosh Yadav</b></sub></a><br /><a href="https://github.com/santoshyadavdev/angular-snipptes/commits?author=SantoshYadavDev" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/olierxleben"><img src="https://avatars.githubusercontent.com/u/1403225?v=4?s=100" width="100px;" alt="Oliver Erxleben"/><br /><sub><b>Oliver Erxleben</b></sub></a><br /><a href="https://github.com/santoshyadavdev/angular-snippets/commits?author=olierxleben" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/9kubczas4"><img src="https://avatars.githubusercontent.com/u/43759569?v=4?s=100" width="100px;" alt="Paweł Kubiak"/><br /><sub><b>Paweł Kubiak</b></sub></a><br /><a href="https://github.com/santoshyadavdev/angular-snippets/commits?author=9kubczas4" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/santoshyadavdev"><img src="https://avatars.githubusercontent.com/u/11923975?v=4?s=100" width="100px;" alt="Santosh Yadav"/><br /><sub><b>Santosh Yadav</b></sub></a><br /><a href="https://github.com/santoshyadavdev/angular-snippets/commits?author=SantoshYadavDev" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Nicoss54"><img src="https://avatars.githubusercontent.com/u/24563545?v=4?s=100" width="100px;" alt="Nicolas Frizzarin"/><br /><sub><b>Nicolas Frizzarin</b></sub></a><br /><a href="https://github.com/santoshyadavdev/angular-snippets/commits?author=Nicoss54" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
