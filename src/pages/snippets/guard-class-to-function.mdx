@@ -1,0 +1,64 @@
+---
+title: Migration Class Guard to Function Guard
+description: "Easy example on how to migrate a class guard in a function guard"
+tags: ["angular14", "functional guard"]
+pubDate: Feb 24, 2023
+contributedBy: "@Nicoss54"
+---
+
+Here is  simple example of how to translate a class guard into a functional guard.
+Since version 14 of angular, and especially thanks to the possibility to use the inject function outside the injection context. It is now possible to write our Guards as a simple function.
+With the arrival of Angular 15.2, writing guard as a class is now deprecated.
+
+```typescript
+import { Injectable } from '@angular/core';
+import { Router, type CanActivate } from '@angular/router';
+import { UserService } from './userService'
+
+@Injectable({ provideIn:  'root' })
+export class AuthenticationGuard implements CanActivate {
+  constructor(
+    private readonly userService: UserService,
+    private readonly router: Router) {}
+
+  canActivate(): Observable<boolean | UrlTree> {
+    return this.userService.currentUser$.pipe(
+        map(user => Boolean(user) ? 
+          true : this.router.createUrlTree(['sign-in']))
+    )
+  }
+}
+```
+
+In previous versions of Angular, this syntax was mandatory and particularly useful for injecting our services.
+
+Thanks to the inject function, this class can be easily transformed into a function.
+
+```typescript
+import { Router, type CanActivateFn } from '@angular/router';
+import { UserService } from './userService'
+
+export function AuthenticationGuard(): CanActivateFn {
+  const userService = inject(UserService);
+  const router = inject(Router);
+
+  return userService.currentUser$.pipe(
+    map(user => Boolean(user) ?
+      true : router.createUrlTree(['sign-in'])
+  ))
+}
+```
+
+The way to register your guard on a path has not changed; whether the guard is in the form of a class or a simple function the syntax of registration has not changed.
+
+```typescript
+import type Routes from '@angular/router';
+import { HomeComponent } from './home.component';
+import { SignInComponent } from './sign-in.component';
+import { AuthenticationGuard } from './authentication-guard'
+
+const routes: Routes = [
+  { path: 'sign-in', component: SignInComponent }
+  { path: 'home', component: HomeComponent, canActivate: [AuthenticationGuard]}
+]
+```
