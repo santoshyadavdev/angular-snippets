@@ -1,0 +1,48 @@
+---
+title: NgRx Component Store Stateful Standalone Component
+description: "Example of using Component store to add state to a component"
+tags: ["angular", "ngrx", "state"]
+pubDate: Feb 25, 2023
+contributedBy: "@JayCooperBell"
+---
+
+A simple example of adding state to a component without an additional service with NgRx Component Store.
+
+```typescript
+import { Component } from '@angular/core';
+import { ComponentStore } from '@ngrx/component-store';
+import { interval, Observable, tap } from 'rxjs';
+import { AsyncPipe } from '@angular/common';
+
+interface MyState {
+  counter: number;
+}
+
+@Component({
+  selector: 'my-stateful-component',
+  standalone: true,
+  template: ` <div>{{ counter$ | async }}</div>`,
+  imports: [AsyncPipe],
+})
+export class MyStatefulComponentComponent extends ComponentStore<MyState> {
+  readonly counter$ = this.select((state) => state.counter);
+
+  private readonly incrementCounter = this.updater((state) => ({
+    ...state,
+    counter: state.counter + 1,
+  }));
+
+  private readonly incrementByInterval = this.effect(
+    (origin$: Observable<number>) =>
+      origin$.pipe(tap(() => this.incrementCounter()))
+  );
+
+  constructor() {
+    super({
+      counter: 0,
+    });
+
+    this.incrementByInterval(interval(1000));
+  }
+}
+```
