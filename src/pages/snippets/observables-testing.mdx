@@ -1,0 +1,74 @@
+---
+title: Different ways of observables' testing
+description: "Unwrap & test your observables in different ways depending on a case"
+tags: ["angular", "rxjs", "jest", "testing"]
+pubDate: Feb 25, 2023
+contributedBy: "@bartosz_wasilew"
+---
+
+Let's assume we have some `UserListComponent` exposing public stream `users$` (typeof User):
+
+```typescript
+type User = {
+	id: number;
+	name: string;
+	email: string;
+};
+```
+
+In case we'd like to test it, for this example we'll need the following setup:
+
+```typescript
+const usersMock: User[] = [
+	{ id: 1, name: 'Johny Bravo', email: 'johny.bravo@xoxo.com' },
+	{ id: 2, name: 'React dev', email: 'ihatemyjob@really.io' }, // Heey I'm just kidding, Angular 🤝 React
+	{ id: 3, name: '10x Dev', email: '10xdev@hotmail.com' },
+];
+
+const userListComponent = {
+	users$: of(usersMock),
+};
+```
+
+Then you aren't limited only to use `subscribe()` on this Observable, you can pick different ways depending on your case:
+
+```typescript
+	it('done func', (done: DoneCallback) => {
+		userListComponent.users$.subscribe((expectedUsers: User[]) => {
+			expect(expectedUsers).toStrictEqual(usersMock);
+			done();
+		});
+	});
+
+	it('first value from', async () => {
+		const expectedUsers: User[] = await firstValueFrom(
+			userListComponent.users$,
+		);
+		expect(expectedUsers).toStrictEqual(usersMock);
+	});
+
+	it('Fake async & tick', fakeAsync(() => {
+		let expectedUsers;
+		userListComponent.users$.subscribe((users: User[]) =>
+			setTimeout(() => {
+				expectedUsers = users;
+			}, 2000),
+		);
+		tick(2100);
+		expect(expectedUsers).toStrictEqual(usersMock);
+	}));
+
+	it('marbles', () => {
+		const testScheduler = new TestScheduler((actual, expected) => {
+			expect(actual).toStrictEqual(expected);
+		});
+		testScheduler.run(({ expectObservable }) => {
+			expectObservable(userListComponent.users$).toBe('(a|)', {
+				a: usersMock,
+			});
+		});
+	});
+```
+
+
+
