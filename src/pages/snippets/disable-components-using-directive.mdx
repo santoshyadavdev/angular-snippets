@@ -1,0 +1,53 @@
+---
+title: Disable components using directive
+description: "Example of directive to disable interactive components when a certain condition is met."
+tags: ["angular", "directives"]
+pubDate: Feb 25, 2023
+contributedBy: "@pawelkubiakdev"
+---
+
+The code snippet below shows how to disable (angular material) components if the shouldDisable$ stream from the ExampleService emits true.
+This can be a useful solution when we want to block actions when the user does not have the appropriate permissions resulting from:
+- user role
+- a feature that is blocked for the user etc.
+
+
+```typescript
+@Directive({
+  selector: '[disableInteractiveElements]',
+  standalone: true,
+  hostDirectives: [DestroyedDirective]
+})
+export class DisableInteractiveElementsDirective implements OnInit {
+  private readonly destroyed$ = inject(DestroyedDirective).destroyed$;
+
+  constructor(private readonly service: ExampleService,
+              @Optional() @Self() private readonly button: MatButton,
+              @Optional() @Self() private readonly select: MatSelect) {}
+
+  ngOnInit(): void {
+    this.service.shouldDisable$
+    .pipe(takeUntil(this.destroyed$))
+    .subscribe((shouldDisable) => {
+      if (this.button) {
+        this.button.disabled = shouldDisable;
+      } else if (this.select) {
+        this.select.disabled = shouldDisable;
+      }
+    });
+  }
+}
+```
+
+Usage in template:
+
+```html
+  <button mat-button mat-raised-button>Always available</button>
+  <button disableInteractiveElements mat-button mat-raised-button>Could be disabled</button>
+  <mat-select disableInteractiveElements placeholder="Settings">
+    <mat-option value="'setting1'">Setting 1</mat-option>
+    <mat-option value="'setting2'">Setting 2</mat-option>
+  </mat-select>
+```
+
+In the case shown above, the first button will always be active, while the other elements, i.e. the second button and select, will be active if `service.shouldDisable$` emits false.
