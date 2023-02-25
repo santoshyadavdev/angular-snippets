@@ -1,0 +1,68 @@
+---
+title: NgRx Component Store Stateful Directive with Output
+description: "Example of using Component store in a directive to output state changes"
+tags: ["angular", "ngrx", "state"]
+pubDate: Feb 25, 2023
+contributedBy: "@JayCooperBell"
+---
+
+Using NgRx Component Store to add state to a Directive which then outputs that state to the parent.
+
+```typescript
+import { Directive, Output } from '@angular/core';
+import { ComponentStore } from '@ngrx/component-store';
+import { interval, Observable, tap } from 'rxjs';
+
+interface MyState {
+  counter: number;
+}
+
+@Directive({
+  selector: '[myStatefulDirective]',
+  standalone: true,
+})
+export class StatefulDirectiveWithOutputsDirective extends ComponentStore<MyState> {
+  @Output() counterChange = this.select((state) => state.counter);
+
+  private readonly incrementCounter = this.updater((state) => ({
+    ...state,
+    counter: state.counter + 1,
+  }));
+
+  private readonly incrementByInterval = this.effect(
+    (origin$: Observable<number>) =>
+      origin$.pipe(tap(() => this.incrementCounter()))
+  );
+
+  constructor() {
+    super({
+      counter: 0,
+    });
+
+    this.incrementByInterval(interval(1000));
+  }
+}
+```
+
+And then in your parent component you can use it like this:
+
+```typescript
+import { Component } from '@angular/core';
+import { StatefulDirectiveWithOutputsDirective } from './stateful-directive-with-outputs.directive';
+
+@Component({
+  standalone: true,
+  selector: 'angular-snippet-examples-root',
+  template: `
+    <div myStatefulDirective (counterChange)="counter = $event">
+      {{ counter }}
+    </div>
+  `,
+  imports: [
+    StatefulDirectiveWithOutputsDirective,
+  ],
+})
+export class AppComponent {
+  counter: number | null = null;
+}
+```
