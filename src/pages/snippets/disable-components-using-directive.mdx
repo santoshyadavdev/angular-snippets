@@ -11,6 +11,8 @@ This can be a useful solution when we want to block actions when the user does n
 - user role
 - a feature that is blocked for the user etc.
 
+(*) `DestroyedDirective` was implemented according to the idea of [Kristiyan Kostadinov](https://twitter.com/_crisbeto/status/1582475442715385858).
+
 
 ```typescript
 @Directive({
@@ -22,6 +24,7 @@ export class DisableInteractiveElementsDirective implements OnInit {
   private readonly destroyed$ = inject(DestroyedDirective).destroyed$;
 
   constructor(private readonly service: ExampleService,
+              private readonly elementRef: ElementRef,
               @Optional() @Self() private readonly button: MatButton,
               @Optional() @Self() private readonly select: MatSelect) {}
 
@@ -33,6 +36,8 @@ export class DisableInteractiveElementsDirective implements OnInit {
         this.button.disabled = shouldDisable;
       } else if (this.select) {
         this.select.disabled = shouldDisable;
+      } else if (this.elementRef.nativeElement && ('disabled' in this.elementRef.nativeElement)) {
+        this.elementRef.nativeElement.disabled = shouldDisable;
       }
     });
   }
@@ -48,6 +53,7 @@ Usage in template:
     <mat-option value="'setting1'">Setting 1</mat-option>
     <mat-option value="'setting2'">Setting 2</mat-option>
   </mat-select>
+  <input disableInteractiveElements type="text" name="input" id="input" />
 ```
 
-In the case shown above, the first button will always be active, while the other elements, i.e. the second button and select, will be active if `service.shouldDisable$` emits false.
+In the case shown above, the first button will always be active, while the other elements, i.e. the second button, select and input, will be active if `service.shouldDisable$` emits false.
