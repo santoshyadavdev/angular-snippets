@@ -41,6 +41,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "yharaskrik",
+      "name": "Jay Bell",
+      "avatar_url": "https://avatars.githubusercontent.com/u/9469090?v=4",
+      "profile": "http://trellis.org",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
