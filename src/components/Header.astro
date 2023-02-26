@@ -1,7 +1,5 @@
 ---
-import { Icon } from "astro-icon";
-
-const desktop = [
+const navItems = [
   {
     name: "Snippets",
     href: "/snippets/",
@@ -16,10 +14,10 @@ const desktop = [
 
 <header class="dark:bg-zinc-900 bg-white max-w-7xl m-auto transition-colors">
   <a href="/" class="text-lg sm:text-xl text-black dark:text-zinc-300 hover:dark:text-white transition-colors absolute m-8">Angular Snippets</a>
-  <nav class="p-8 flex justify-end">
+  <nav class="p-8 hidden sm:flex justify-end">
     <ul class="flex justify-end items-center m-0 space-x-1">
       {
-        desktop.map((item) => (
+        navItems.map((item) => (
           <li>
             <a href ={item.href} class="hover:bg-zinc-300 dark:hover:bg-zinc-700 dark:text-zinc-300 text-black p-2 transition-colors rounded-lg">
               {item.name}
@@ -36,5 +34,32 @@ const desktop = [
       <Icon name="akar-icons:sun" class="w-6 dark:text-white text-black transition-colors hidden dark:block" />
     </button>
   </nav>
-  
+  <nav class="p-2 flex sm:hidden justify-end">
+    <a aria-label="github" class="pointer mx-3 py-6" href="https://github.com/santoshyadavdev/angular-snipptes" target="_blank">
+      <Icon name="simple-icons:github" class="w-6 dark:text-white text-black" />
+    </a>
+    <button aria-label="theme toggle" class="pointer theme-toggle">
+      <Icon name="eva:moon-outline" class="w-6 dark:text-white text-black transition-colors dark:hidden" />
+      <Icon name="akar-icons:sun" class="w-6 dark:text-white text-black transition-colors hidden dark:block" />
+    </button>
+    <button class="flex sm:hidden justify-end nav-toggle ml-3 mr-6 py-6" aria-label="menu button">
+      <Icon name="ri:menu-4-line" class="w-6 h-6" />
+    </button>
+  </nav>
+
+</header>
+
+<header class="nav-menu hidden bg-white dark:bg-zinc-900">
+  {
+    (
+        <nav class="m-8 flex flex-col inline-flex space-y-1 ">
+          {navItems.map((navbar) => (
+              <a href={navbar.href} class="hover:bg-zinc-300 dark:hover:bg-zinc-700 dark:text-zinc-300 text-black p-2 transition-colors rounded-lg">
+                {navbar.name}
+              </a>
+          ))}
+        </nav>
+    )
+  }
+
 </header>
