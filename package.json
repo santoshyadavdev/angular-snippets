@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro build && astro preview"
+    "preview": "astro build && astro preview",
+    "prettier": "prettier --write --plugin-search-dir=. ."
   },
   "devDependencies": {
     "@astrojs/image": "^0.11.6",
@@ -20,6 +21,8 @@
     "astro-compress": "1.0.8",
     "astro-icon": "^0.8.0",
     "astro-layouts": "^0.0.6",
+    "prettier": "^2.8.4",
+    "prettier-plugin-astro": "^0.8.0",
     "remark-code-title": "^0.2.2",
     "sharp": "^0.31.2",
     "tailwind-scrollbar": "^2.0.1",
