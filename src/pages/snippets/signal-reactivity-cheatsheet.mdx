@@ -1,0 +1,79 @@
+---
+title: Signal Reactivity Cheat sheet
+description: "A cheat sheet about Signal Primary Reactivity"
+tags: ["angular16", "signal reactivity"]
+pubDate: Feb 27, 2023
+contributedBy: "@Nicoss54"
+---
+
+Until now, Angular used Zone JS to perform change detection and therefore to refresh the view.
+
+Change detection works by detecting common browser events like mouse clicks, HTTP requests, and other types of events, and deciding if the view of each component needs to be updated or not.
+By default, Angular uses the _ChangeDetectionStrategy.Default_ change detection strategy which checks every component in the component tree from the top to the bottom every time a common browser event is emitted.
+This way of checking don't take into account the components' dependencies and is called dirty checking. This can negatively influence your application performance specially for large application with many components.
+
+With the release of Angular version 16, a new system of primitive reactivity will be created: Signal Reactivity  which don't need zone js to trigger a refresh of a view.
+
+The goal of this snippet is to give you a cheat sheet about signal reactivity and give you keys to be ready to work with them.
+
+#### Create a signal
+
+Create a signal is very easy, it's just calling a function
+
+```typescript
+const counter = signal(0) // create a signal with initial value to 0;
+```
+
+#### Update a signal
+
+The signal function return a SettableSignal. This gives you some amazing possibilities
+
+```typescript
+const todos = signal([]);
+
+todos.set(['Make My dinner']) // directly set the signal to a new value and notify all the dependents
+
+todos.update(currentTodos => ([...currentTodos,  'Create a new Angular Snippet']) ) // update the value of the signal based on its current value and notify all dependents
+
+todos.mutate(currentTodos => {
+  currentTodos.push('Participate to Open Source'); 
+}) // update the currentValue by mutating it in-place and notify all the dependents
+```
+
+#### Get the value of a signal
+
+The way to get the value of a signal will be the same in the template as in the component.
+
+```typescript
+const counter = signal(0) // create a signal with initial value
+console.log(counter()) // print the value of the signal which is 0
+```
+
+#### Computed
+
+`computed()` creates a memoizing signal, which calculates its value from the values of some number of input signals.
+
+```typescript
+const person = signal<{ firstname: string; lastname: string}>({ firstname: 'John', lastname: 'Doe'})
+
+// Automatically updates when person() change;
+const presentation = computed(() => console.log(`${person().firstname} ${person().lastname}`));
+
+person.update(person => ({ firstname: 'Angular', lastname: 'Snippet'}));
+```
+
+#### Effect
+
+`effect()` schedules and runs a side-effectful function inside a reactive context. Signal dependencies of this function are captured, and the side effect is re-executed whenever any of its dependencies produces a new value.
+
+```typescript
+const idTodo = signal(12);
+
+effect(() => 
+  fetch(`https://awesome-todo.com/todos/${idTodo()}`)
+    .then(response => response.json())
+    .then(console.log) // will sent the request with idTodo() = 12
+)
+```
+
+
