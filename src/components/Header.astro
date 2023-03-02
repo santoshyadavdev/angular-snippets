@@ -14,25 +14,47 @@ const navItems = [
 ---
 
 <header class="dark:bg-zinc-900 bg-white max-w-7xl m-auto">
-  <a href="/" class="text-lg sm:text-xl text-black dark:text-zinc-300 hover:dark:text-white transition-colors absolute m-8">Angular Snippets</a>
+  <a
+    href="/"
+    class="text-lg sm:text-xl text-black dark:text-zinc-300 hover:dark:text-white transition-colors absolute m-8"
+  >
+    Angular Snippets
+  </a>
   <nav class="p-8 hidden sm:flex justify-end">
     <ul class="flex justify-end items-center m-0 space-x-2">
       {
         navItems.map((item) => (
           <li>
-            <a href ={item.href} class="hover:bg-zinc-300/60 dark:hover:bg-zinc-700/30 dark:text-zinc-300 text-black px-2 py-1 transition-colors rounded-lg">
+            <a
+              href={item.href}
+              class="hover:bg-zinc-300/60 dark:hover:bg-zinc-700/30 dark:text-zinc-300 text-black px-2 py-1 transition-colors rounded-lg"
+            >
               {item.name}
             </a>
           </li>
         ))
       }
     </ul>
-    <a aria-label="github" class="dark:opacity-80 dark:hover:opacity-100 hover:opacity-90 pointer mx-6" href="https://github.com/santoshyadavdev/angular-snipptes" target="_blank">
+    <a
+      aria-label="github"
+      class="dark:opacity-80 dark:hover:opacity-100 hover:opacity-90 pointer mx-6"
+      href="https://github.com/santoshyadavdev/angular-snipptes"
+      target="_blank"
+    >
       <Icon name="simple-icons:github" class="w-5 dark:text-white text-black" />
     </a>
-    <button aria-label="theme toggle" class="dark:opacity-80 dark:hover:opacity-100 hover:opacity-90 pointer theme-toggle">
-      <Icon name="eva:moon-outline" class="w-5 dark:text-white text-black transition-colors dark:hidden" />
-      <Icon name="akar-icons:sun" class="w-5 dark:text-white text-black transition-colors hidden dark:block" />
+    <button
+      aria-label="theme toggle"
+      class="dark:opacity-80 dark:hover:opacity-100 hover:opacity-90 pointer theme-toggle"
+    >
+      <Icon
+        name="eva:moon-outline"
+        class="w-5 dark:text-white text-black transition-colors dark:hidden"
+      />
+      <Icon
+        name="akar-icons:sun"
+        class="w-5 dark:text-white text-black transition-colors hidden dark:block"
+      />
     </button>
   </nav>
   <nav class="p-2 flex sm:hidden justify-end">
@@ -63,16 +85,21 @@ const navItems = [
   </nav>
 </header>
 
-<header class="absolute border-b border-gray-900/10 dark:border-gray-700/40 t-0 inset-x-0 nav-menu hidden bg-white dark:bg-zinc-900">
+<header
+  class="absolute border-b border-gray-900/10 dark:border-gray-700/40 t-0 inset-x-0 nav-menu hidden bg-white dark:bg-zinc-900"
+>
   {
     (
-        <nav class="w-full p-8 pt-0 flex flex-col inline-flex space-y-1 ">
-          {navItems.map((navbar) => (
-              <a href={navbar.href} class="w-full hover:bg-zinc-300 dark:hover:bg-zinc-700 dark:text-zinc-300 text-black p-2 transition-colors rounded-lg">
-                {navbar.name}
-              </a>
-          ))}
-        </nav>
+      <nav class="w-full p-8 pt-0 flex flex-col inline-flex space-y-1 ">
+        {navItems.map((navbar) => (
+          <a
+            href={navbar.href}
+            class="w-full hover:bg-zinc-300 dark:hover:bg-zinc-700 dark:text-zinc-300 text-black p-2 transition-colors rounded-lg"
+          >
+            {navbar.name}
+          </a>
+        ))}
+      </nav>
     )
   }
 </header>

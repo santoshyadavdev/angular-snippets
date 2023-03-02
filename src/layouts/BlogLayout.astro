@@ -82,9 +82,7 @@ const canonicalURL = new URL(Astro.url).href;
   >
     <Header />
     <main class="mx-auto !max-w-screen-lg m-auto p-6 max-w-7xl">
-      <section
-        class="dark:text-slate-200 dark:bg-inherit px-3"
-      >
+      <section class="dark:text-slate-200 dark:bg-inherit px-3">
         <header class="mb-5">
           <h1 class="font-bold text-4xl mb-4 dark:text-white">
             {frontmatter.title}
@@ -103,13 +101,13 @@ const canonicalURL = new URL(Astro.url).href;
             <TagsLine tags={frontmatter.tags} />
           </div>
         </header>
-        <article class="mx-auto !max-w-screen-lg prose prose-zinc sm:prose-lg prose-img:mx-auto prose-a:dark:text-blue-400 prose-a:no-underline prose-pre:scrollbar-thin prose-pre:scrollbar-thumb-zinc-400 prose-pre:scrollbar-track-zinc-300 prose-pre:dark:scrollbar-thumb-zinc-500 prose-pre:dark:scrollbar-track-zinc-700 dark:bg-zinc-900 hover:prose-a:underline prose-a:text-blue-700 dark:prose-invert prose-a:underline-offset-2">
+        <article
+          class="mx-auto !max-w-screen-lg prose prose-zinc sm:prose-lg prose-img:mx-auto prose-a:dark:text-blue-400 prose-a:no-underline prose-pre:scrollbar-thin prose-pre:scrollbar-thumb-zinc-400 prose-pre:scrollbar-track-zinc-300 prose-pre:dark:scrollbar-thumb-zinc-500 prose-pre:dark:scrollbar-track-zinc-700 dark:bg-zinc-900 hover:prose-a:underline prose-a:text-blue-700 dark:prose-invert prose-a:underline-offset-2"
+        >
           <slot />
         </article>
         <section class="flex flex-row justify-between my-16">
-          <a href="/snippets" class="hover:underline"
-            >Back to snippets</a
-          >
+          <a href="/snippets" class="hover:underline">Back to snippets</a>
         </section>
         <Footer />
       </section>
