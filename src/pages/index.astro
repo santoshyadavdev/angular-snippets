@@ -18,33 +18,33 @@ blogs = blogs.sort(
 ---
 
 <Layout {...metadata}>
-  <section class="flex flex-col sm:flex-row justify-evenly items-center py-14">
-    <div class="w-32 m-5 md:m-10 my-10">
-      <Icon class="h-8 md:h-12" name="simple-icons:angular" />
+  <section class="flex flex-col sm:flex-row justify-between items-center sm:py-14">
+    <div class="flex items-center justify-center sm:w-1/2 m-5 md:m-10 my-10">
+      <Icon class="h-12 lg:h-20" name="simple-icons:angular" />
     </div>
     <header class="max-w-xl sm:order-first">
       <h1
         class="text-2xl sm:text-3xl font-bold mb-7 md:mb-5 text-center sm:text-left"
       >
-        Welcome to Angular Snippets, add a snippet and help community
+        Welcome to Angular Snippets, add a snippet and help the community
       </h1>
-      <p class="text-black dark:text-zinc-300 mb-5">
+      <p class="mb-4 text-base text-zinc-700 dark:text-zinc-300">
         There are some code snippets which you may have created and want to
         share with the world!
       </p>
-      <p class="text-black dark:text-zinc-300">
+      <p class="text-zinc-700 dark:text-zinc-300">
         This is the place to share your code snippets with the world. You can
         add your own snippets and help the community.
       </p>
     </header>
   </section>
   <section class="py-14">
-    <h1 class="text-2xl sm:text-3xl font-bold mb-5">Recent Snippets</h1>
-    <p class="text-black dark:text-zinc-300 mb-2">
+    <h1 class="text-xl sm:text-2xl font-bold mb-2">Recent Snippets</h1>
+    <p class="text-zinc-700 dark:text-zinc-300 mb-4">
       Looking for all snippets? Click the "snippets" or the "Show more snippets"
       link down below.
     </p>
-    <ul class="flex flex-col justify-center py-5">
+    <ul class="flex flex-col justify-center gap-4 sm:gap-6 pb-4 sm:pb-6">
       {
         blogs.length >= 1 &&
           blogs
@@ -63,7 +63,7 @@ blogs = blogs.sort(
     </ul>
     <div class="text-center dark:text-zinc-300 text-zinc-200 mt-5">
       <a
-        class="flex items-center dark:bg-zinc-800 bg-zinc-200 dark:ring-zinc-700 hover:ring-2 ring-zinc-300 transition-all dark:text-white flex-col m-2 p-2 rounded-xl text-black"
+        class="text-base flex items-center dark:bg-zinc-800 bg-zinc-200/30 dark:ring-zinc-700 hover:ring-2 ring-zinc-300 transition-all dark:text-white flex-col m-2 p-2 rounded-xl text-black"
         href="/snippets">Show more snippets</a
       >
     </div>
