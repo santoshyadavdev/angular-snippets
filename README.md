@@ -1,9 +1,7 @@
 # Angular Snippets
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-
-[![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
-
+[![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 A website to find and share code snippets for Angular.
@@ -81,6 +79,7 @@ pnpm preview
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Nicoss54"><img src="https://avatars.githubusercontent.com/u/24563545?v=4?s=100" width="100px;" alt="Nicolas Frizzarin"/><br /><sub><b>Nicolas Frizzarin</b></sub></a><br /><a href="https://github.com/santoshyadavdev/angular-snippets/commits?author=Nicoss54" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="http://trellis.org"><img src="https://avatars.githubusercontent.com/u/9469090?v=4?s=100" width="100px;" alt="Jay Bell"/><br /><sub><b>Jay Bell</b></sub></a><br /><a href="https://github.com/santoshyadavdev/angular-snippets/commits?author=yharaskrik" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/wasylb"><img src="https://avatars.githubusercontent.com/u/43531815?v=4?s=100" width="100px;" alt="Bartosz Wasilew"/><br /><sub><b>Bartosz Wasilew</b></sub></a><br /><a href="https://github.com/santoshyadavdev/angular-snippets/commits?author=wasylb" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://goetzrobin.github.io"><img src="https://avatars.githubusercontent.com/u/35136007?v=4?s=100" width="100px;" alt="Robin Goetz"/><br /><sub><b>Robin Goetz</b></sub></a><br /><a href="https://github.com/santoshyadavdev/angular-snippets/commits?author=goetzrobin" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
