@@ -1,0 +1,68 @@
+---
+title: Putting constraints on selectors
+description: "Making our components and directives more robust by putting constraints on their selectors"
+tags: ["angular"]
+pubDate: Mar 02, 2023
+contributedBy: "@Nartc1410"
+---
+
+`Component#selector` and `Directive#selector` are just like CSS Selector. This means we can utilize some CSS pseudo-class
+to put constraints on our `selector`, making them more robust and provide better DX to our consumers
+
+Suppose we have the following `NgxLilGui` component that wraps the `lil-gui` library.
+
+> To learn more about `lil-gui`, visit [https://lil-gui.georgealways.com/](https://lil-gui.georgealways.com/)
+
+```ts
+@Component({
+  selector: "ngx-lil-gui",
+  template: ` <ng-content></ng-content> `,
+  standalone: true,
+})
+export class NgxLilGui implements OnInit, OnDestroy {
+  @Input() config: Config;
+  @Input() object: Record<string, any>;
+
+  /* ... */
+}
+```
+
+To make it flexible for the consumers, we allow the consumers to use `config` OR `object` to control the `lil-gui` library.
+In addition, the consumers can also use `<ngx-lil-gui>` without passing in anything. In this case, `<ngx-lil-gui>` acts as a
+group of other `<ngx-lil-gui>`
+
+```html
+<ng-container #anchor />
+<span #spanElement>This is a span</span>
+
+<ngx-lil-gui>
+  <!-- config object contains a dynamic HTMLElement that we can control -->
+  <ngx-lil-gui [config]="config" />
+  <ngx-lil-gui title="SPAN" [object]="spanElement.style" />
+</ngx-lil-gui>
+```
+
+However, there's nothing to stop the consumers to use both `[config]` and `[object]` on `<ngx-lil-gui>`
+
+```html
+<ngx-lil-gui [config]="config" [object]="object" />
+```
+
+To apply this constraint, we can modify our selector as follow:
+
+```ts
+@Component({
+  selector: `
+    ngx-lil-gui:not([config]):not([object]),
+    ngx-lil-gui[config]:not([object]),
+    ngx-lil-gui[object]:not([config])
+  `,
+  /* ... */
+})
+export class NgxLilGui implements OnInit, OnDestroy {
+  /* ... */
+}
+```
+
+Now, the consumers can instantiate `NgxLilGui` component by using `<ngx-lil-gui />`, `<ngx-lil-gui [config] />`,
+or `<ngx-lil-gui [object] />` but never `<ngx-lil-gui [config] [object] />`
