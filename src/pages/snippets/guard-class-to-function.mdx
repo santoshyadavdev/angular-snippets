@@ -6,26 +6,28 @@ pubDate: Feb 24, 2023
 contributedBy: "@Nicoss54"
 ---
 
-Here is  simple example of how to translate a class guard into a functional guard.
+Here is simple example of how to translate a class guard into a functional guard.
 Since version 14 of angular, and especially thanks to the possibility to use the inject function outside the injection context. It is now possible to write our Guards as a simple function.
 With the arrival of Angular 15.2, writing guard as a class is now deprecated.
 
 ```typescript
-import { Injectable } from '@angular/core';
-import { Router, type CanActivate } from '@angular/router';
-import { UserService } from './userService'
+import { Injectable } from "@angular/core";
+import { Router, type CanActivate } from "@angular/router";
+import { UserService } from "./userService";
 
-@Injectable({ provideIn:  'root' })
+@Injectable({ provideIn: "root" })
 export class AuthenticationGuard implements CanActivate {
   constructor(
     private readonly userService: UserService,
-    private readonly router: Router) {}
+    private readonly router: Router
+  ) {}
 
   canActivate(): Observable<boolean | UrlTree> {
     return this.userService.currentUser$.pipe(
-        map(user => Boolean(user) ? 
-          true : this.router.createUrlTree(['sign-in']))
-    )
+      map((user) =>
+        Boolean(user) ? true : this.router.createUrlTree(["sign-in"])
+      )
+    );
   }
 }
 ```
@@ -35,17 +37,16 @@ In previous versions of Angular, this syntax was mandatory and particularly usef
 Thanks to the inject function, this class can be easily transformed into a function.
 
 ```typescript
-import { Router, type CanActivateFn } from '@angular/router';
-import { UserService } from './userService'
+import { Router, type CanActivateFn } from "@angular/router";
+import { UserService } from "./userService";
 
 export function AuthenticationGuard(): CanActivateFn {
   const userService = inject(UserService);
   const router = inject(Router);
 
   return userService.currentUser$.pipe(
-    map(user => Boolean(user) ?
-      true : router.createUrlTree(['sign-in'])
-  ))
+    map((user) => (Boolean(user) ? true : router.createUrlTree(["sign-in"])))
+  );
 }
 ```
 

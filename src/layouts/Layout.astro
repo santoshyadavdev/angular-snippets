@@ -42,13 +42,18 @@ const canonicalURL = new URL(Astro.url).href;
     <script is:inline>
       // credits to satnaing on github
       const primaryColorScheme = "none";
-      const darkModeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const darkModeMediaQuery = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
       const currentTheme = localStorage.getItem("theme");
       let theme;
       if (currentTheme) {
         theme = currentTheme === "dark" ? "dark" : "";
       } else {
-        if (primaryColorScheme === "dark" || (primaryColorScheme === "none" && darkModeMediaQuery)) {
+        if (
+          primaryColorScheme === "dark" ||
+          (primaryColorScheme === "none" && darkModeMediaQuery)
+        ) {
           theme = "dark";
         } else if (primaryColorScheme === "light") {
           theme = "";
@@ -59,7 +64,6 @@ const canonicalURL = new URL(Astro.url).href;
       document.documentElement.className = theme;
     </script>
     <script src="@scripts/main.js"></script>
-
   </head>
   <body
     class="font-inter dark:bg-zinc-900 dark:text-white selection:bg-sky-600/60 scrollbar-thin scrollbar-thumb-zinc-400 scrollbar-track-zinc-300 dark:scrollbar-thumb-zinc-600 dark:scrollbar-track-zinc-800"

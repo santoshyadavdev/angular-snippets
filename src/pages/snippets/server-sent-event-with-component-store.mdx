@@ -14,10 +14,11 @@ A NgRx ComponentStore sets up a connection that updates the store with the time 
 This example assumes you have an API setup that sends SSE. For a full stack example see https://github.com/yharaskrik/nest-ng-ngrx-component-store-sse-demo
 
 Set up a global NgRx Store with Effects.
+
 ```typescript
-import { Injectable, NgZone } from '@angular/core';
-import { ComponentStore, tapResponse } from '@ngrx/component-store';
-import { Observable, Subject } from 'rxjs';
+import { Injectable, NgZone } from "@angular/core";
+import { ComponentStore, tapResponse } from "@ngrx/component-store";
+import { Observable, Subject } from "rxjs";
 
 function eventSourceToObservable(
   source: string,
@@ -65,7 +66,7 @@ export class TimeSseStore extends ComponentStore<TimeSseState> {
    * date sent from the server.
    */
   readonly getTime$ = this.effect(() =>
-    eventSourceToObservable('time', this._ngZone).pipe(
+    eventSourceToObservable("time", this._ngZone).pipe(
       tapResponse(
         (data) => {
           this.setNow(data.now);
@@ -78,6 +79,7 @@ export class TimeSseStore extends ComponentStore<TimeSseState> {
 ```
 
 References:
+
 1. https://docs.nestjs.com/techniques/server-sent-events
 2. https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events
 3. https://ngrx.io/guide/component-store/effect

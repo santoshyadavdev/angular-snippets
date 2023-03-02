@@ -5,7 +5,15 @@
   "deno.importMap": ".netlify/edge-functions-import-map.json",
   "deno.path": "/home/codespace/.config/netlify/deno-cli/deno",
   "prettier.documentSelectors": ["**/*.astro"],
-   "[astro]": {
+  "[astro]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[mdx]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "file",
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true
   }
 }
