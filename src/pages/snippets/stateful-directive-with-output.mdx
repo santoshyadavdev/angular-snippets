@@ -9,16 +9,16 @@ contributedBy: "@JayCooperBell"
 Using NgRx Component Store to add state to a Directive which then outputs that state to the parent.
 
 ```typescript
-import { Directive, Output } from '@angular/core';
-import { ComponentStore } from '@ngrx/component-store';
-import { interval, Observable, tap } from 'rxjs';
+import { Directive, Output } from "@angular/core";
+import { ComponentStore } from "@ngrx/component-store";
+import { interval, Observable, tap } from "rxjs";
 
 interface MyState {
   counter: number;
 }
 
 @Directive({
-  selector: '[myStatefulDirective]',
+  selector: "[myStatefulDirective]",
   standalone: true,
 })
 export class StatefulDirectiveWithOutputsDirective extends ComponentStore<MyState> {
@@ -47,20 +47,18 @@ export class StatefulDirectiveWithOutputsDirective extends ComponentStore<MyStat
 And then in your parent component you can use it like this:
 
 ```typescript
-import { Component } from '@angular/core';
-import { StatefulDirectiveWithOutputsDirective } from './stateful-directive-with-outputs.directive';
+import { Component } from "@angular/core";
+import { StatefulDirectiveWithOutputsDirective } from "./stateful-directive-with-outputs.directive";
 
 @Component({
   standalone: true,
-  selector: 'angular-snippet-examples-root',
+  selector: "angular-snippet-examples-root",
   template: `
     <div myStatefulDirective (counterChange)="counter = $event">
       {{ counter }}
     </div>
   `,
-  imports: [
-    StatefulDirectiveWithOutputsDirective,
-  ],
+  imports: [StatefulDirectiveWithOutputsDirective],
 })
 export class AppComponent {
   counter: number | null = null;

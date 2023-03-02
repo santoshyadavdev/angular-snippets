@@ -11,7 +11,6 @@ const navItems = [
     href: "/rss.xml",
   },
 ];
-
 ---
 
 <header class="dark:bg-zinc-900 bg-white max-w-7xl m-auto">
@@ -37,18 +36,31 @@ const navItems = [
     </button>
   </nav>
   <nav class="p-2 flex sm:hidden justify-end">
-    <a aria-label="github" class="pointer mx-3 py-6" href="https://github.com/santoshyadavdev/angular-snipptes" target="_blank">
+    <a
+      aria-label="github"
+      class="pointer mx-3 py-6"
+      href="https://github.com/santoshyadavdev/angular-snipptes"
+      target="_blank"
+    >
       <Icon name="simple-icons:github" class="w-6 dark:text-white text-black" />
     </a>
     <button aria-label="theme toggle" class="pointer theme-toggle">
-      <Icon name="eva:moon-outline" class="w-6 dark:text-white text-black transition-colors dark:hidden" />
-      <Icon name="akar-icons:sun" class="w-6 dark:text-white text-black transition-colors hidden dark:block" />
+      <Icon
+        name="eva:moon-outline"
+        class="w-6 dark:text-white text-black transition-colors dark:hidden"
+      />
+      <Icon
+        name="akar-icons:sun"
+        class="w-6 dark:text-white text-black transition-colors hidden dark:block"
+      />
     </button>
-    <button class="flex sm:hidden justify-end nav-toggle ml-3 mr-6 py-6" aria-label="menu button">
+    <button
+      class="flex sm:hidden justify-end nav-toggle ml-3 mr-6 py-6"
+      aria-label="menu button"
+    >
       <Icon name="ri:menu-4-line" class="w-6 h-6" />
     </button>
   </nav>
-
 </header>
 
 <header class="absolute border-b border-gray-900/10 dark:border-gray-700/40 t-0 inset-x-0 nav-menu hidden bg-white dark:bg-zinc-900">
@@ -63,5 +75,4 @@ const navItems = [
         </nav>
     )
   }
-
 </header>

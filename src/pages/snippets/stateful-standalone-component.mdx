@@ -9,17 +9,17 @@ contributedBy: "@JayCooperBell"
 Using NgRx Component Store to add state to a Component without an additional service.
 
 ```typescript
-import { Component } from '@angular/core';
-import { ComponentStore } from '@ngrx/component-store';
-import { interval, Observable, tap } from 'rxjs';
-import { AsyncPipe } from '@angular/common';
+import { Component } from "@angular/core";
+import { ComponentStore } from "@ngrx/component-store";
+import { interval, Observable, tap } from "rxjs";
+import { AsyncPipe } from "@angular/common";
 
 interface MyState {
   counter: number;
 }
 
 @Component({
-  selector: 'my-stateful-component',
+  selector: "my-stateful-component",
   standalone: true,
   template: ` <div>{{ counter$ | async }}</div>`,
   imports: [AsyncPipe],

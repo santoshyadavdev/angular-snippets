@@ -10,10 +10,11 @@ An example of a simple global NgRx Store that is used in a ComponentStore that r
 the rest.
 
 Set up a global NgRx Store with Effects.
+
 ```typescript
-import { createAction, createFeature, createReducer, on } from '@ngrx/store';
-import { createEffect } from '@ngrx/effects';
-import { interval, map } from 'rxjs';
+import { createAction, createFeature, createReducer, on } from "@ngrx/store";
+import { createEffect } from "@ngrx/effects";
+import { interval, map } from "rxjs";
 
 interface CounterState {
   counter: number;
@@ -24,11 +25,11 @@ const initialCounterState: CounterState = {
 };
 
 export const incrementCounter = createAction(
-  '[Angular Snippets Example] Increment Counter'
+  "[Angular Snippets Example] Increment Counter"
 );
 
 export const counterState = createFeature({
-  name: 'counter',
+  name: "counter",
   reducer: createReducer(
     initialCounterState,
     on(incrementCounter, (state) => ({
@@ -47,17 +48,16 @@ export const incrementCounterEffect = createEffect(
 ```
 
 Add your global state to the application
+
 ```typescript
-
-
-import { bootstrapApplication } from '@angular/platform-browser';
-import { AppComponent } from './app/app.component';
-import { provideState, provideStore } from '@ngrx/store';
+import { bootstrapApplication } from "@angular/platform-browser";
+import { AppComponent } from "./app/app.component";
+import { provideState, provideStore } from "@ngrx/store";
 import {
   counterState,
   incrementCounterEffect,
-} from './app/global-state-in-component-store';
-import { provideEffects } from '@ngrx/effects';
+} from "./app/global-state-in-component-store";
+import { provideEffects } from "@ngrx/effects";
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -69,18 +69,19 @@ bootstrapApplication(AppComponent, {
 ```
 
 Pull the global state into a component store
+
 ```typescript
-import { Component, inject, Injectable } from '@angular/core';
-import { ComponentStore } from '@ngrx/component-store';
-import { Store } from '@ngrx/store';
-import { Observable, tap } from 'rxjs';
-import { AsyncPipe } from '@angular/common';
+import { Component, inject, Injectable } from "@angular/core";
+import { ComponentStore } from "@ngrx/component-store";
+import { Store } from "@ngrx/store";
+import { Observable, tap } from "rxjs";
+import { AsyncPipe } from "@angular/common";
 
 interface MyState {
   counter: number;
 }
 
-@Injectable({ providedIn: 'root' })
+@Injectable({ providedIn: "root" })
 export class ComponentStoreWithGlobalState extends ComponentStore<MyState> {
   readonly counter$ = this.select((state) => state.counter);
 
@@ -104,7 +105,7 @@ export class ComponentStoreWithGlobalState extends ComponentStore<MyState> {
 }
 
 @Component({
-  selector: 'component-store-with-global-state',
+  selector: "component-store-with-global-state",
   standalone: true,
   providers: [ComponentStoreWithGlobalState],
   imports: [AsyncPipe],
@@ -118,20 +119,19 @@ export class ComponentStoreWithGlobalStateComponent {
 ```
 
 Use the component
+
 ```typescript
-import { Component } from '@angular/core';
-import { ComponentStoreWithGlobalStateComponent } from './global-state-in-component-store';
+import { Component } from "@angular/core";
+import { ComponentStoreWithGlobalStateComponent } from "./global-state-in-component-store";
 
 @Component({
   standalone: true,
-  selector: 'angular-snippet-examples-root',
+  selector: "angular-snippet-examples-root",
   template: `
     <component-store-with-global-state></component-store-with-global-state>
   `,
   styles: [],
-  imports: [
-    ComponentStoreWithGlobalStateComponent,
-  ],
+  imports: [ComponentStoreWithGlobalStateComponent],
 })
 export class AppComponent {}
 ```
