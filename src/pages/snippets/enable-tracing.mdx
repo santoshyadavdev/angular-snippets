@@ -1,0 +1,28 @@
+---
+title: Debugging router events
+description: "How to add enableTracing and withDebugTracing()"
+tags: ["angular", "router"]
+pubDate: Mar 3, 2023
+contributedBy: "@nelsongutidev"
+---
+
+For debugging purposes around router events, Angular provides an easy way to log all internal navigation events to the console
+
+```typescript
+const routes: Routes = [];
+
+@NgModule({
+  import: [RouterModule.forRoot(routes, { enableTracing: true })],
+  exports: [RouterModule],
+})
+export class AppRoutingModule {}
+```
+
+If your not using an NgModule to bootstrap your app, you can use the `withDebugTracing()` method
+
+```typescript
+const appRoutes: Routes = [];
+bootstrapApplication(AppComponent, {
+  providers: [provideRouter(appRoutes, withDebugTracing())],
+});
+```
