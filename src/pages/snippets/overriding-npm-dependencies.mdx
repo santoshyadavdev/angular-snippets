@@ -1,0 +1,71 @@
+---
+title: Overriding NPM deps
+description: "Don't wait/block your work till some NPM package's released, override npm dep & treat it as a temporary solution"
+tags: ["angular", "npm"]
+pubDate: Mar 03, 2023
+contributedBy: "@bartosz_wasilew"
+---
+
+Let's suppose we have to update our Angular version i.e. for security reasons / new features.
+However, some of your libraries can still use outdated Angular version.
+
+As an example we'll consider the following Angular (already updated) modules' versions:
+
+my-app => `package.json`
+```json
+"dependencies": {
+    "@angular/common": "^14.2.0",
+    "@angular/core": "^14.2.0",
+    ...
+    ...
+}
+```
+
+While our lib contains constraints to have the following versions:
+
+my-awesome-lib => `package.json`
+```json
+"peerDependencies": {
+    "@angular/common": "^13.3.12",
+    "@angular/core": "^13.3.12"
+  }
+```
+
+In order to deal with this problem we can:
+1. Wait & block our work till our `my-awesome-lib` supports Angular components in v.`^14.2.0` 👎
+2. `Override` these deps => enforce using versions we provide for the lib 🤩
+
+In order to override our `my-awesome-lib` we'll need to include `overrides` object, with following possible configurations:
+
+```json
+"overrides": {
+    "my-awesome-lib": {
+      "@angular/common": "14.2.0",
+      "@angular/core": "14.2.0"
+    }
+  }
+```
+
+```json
+"overrides": {
+    "my-awesome-lib": {
+      "@angular/common": "^14.2.0",
+      "@angular/core": "^14.2.0"
+    }
+  }
+```
+
+```json
+"overrides": {
+    "my-awesome-lib": {
+      "@angular/common": "$@angular/common",
+      "@angular/core": "$@angular/core"
+    }
+  }
+```
+
+
+
+
+
+
