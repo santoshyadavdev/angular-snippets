@@ -1,0 +1,27 @@
+---
+title: New Image Directive in Angular v15
+description: "Example of New Image Directive in Angular 15 "
+tags: ["angular15", "image directive"] # comma separated list which gets trimmed
+pubDate: Mar 5, 2023
+contributedBy: "@deepakrudrapaul"
+---
+
+Here is a quick example of how to use the _NgOptimizedImage_ directive.
+The _NgOptimizedImage_ directive makes it easy to adopt performance best practices for loading images.
+
+### Import NgOptimizedImage
+
+```typescript
+import { NgOptimizedImage } from "@angular/common";
+```
+
+### Enable the directive
+
+To enable the NgOptimizedImage directive, replace your image's src attribute with _ngSrc_ and to prevent image related layout shifts,
+NgOptimizedImage requires that you specify a height and width for the image.
+
+```html
+<img ngSrc="image.jpg" width="300" height="200" />
+```
+
+---
