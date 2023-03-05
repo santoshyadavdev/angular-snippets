@@ -18,10 +18,18 @@ import { NgOptimizedImage } from "@angular/common";
 ### Enable the directive
 
 To enable the NgOptimizedImage directive, replace your image's src attribute with _ngSrc_ and to prevent image related layout shifts,
-NgOptimizedImage requires that you specify a height and width for the image.
+NgOptimizedImage requires that you specify a height and width for the image
 
 ```html
 <img ngSrc="image.jpg" width="300" height="200" />
+```
+
+And if you don't know the size of the images, you can use the _fill_ attribute to inherit the size of the parent container.
+For the "fill" image to render properly, its parent element must be styled with
+`position: "relative", position: "fixed", or position: "absolute".`
+
+```html
+<img ngSrc="image.jpg" fill />
 ```
 
 ---
