@@ -1,7 +1,7 @@
 # Angular Snippets
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-11-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-12-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 A website to find and share code snippets for Angular.
@@ -85,7 +85,8 @@ pnpm preview
       <td align="center" valign="top" width="14.28%"><a href="https://nartc.me"><img src="https://avatars.githubusercontent.com/u/25516557?v=4?s=100" width="100px;" alt="Chau Tran"/><br /><sub><b>Chau Tran</b></sub></a><br /><a href="https://github.com/santoshyadavdev/angular-snippets/commits?author=nartc" title="Code">💻</a> <a href="https://github.com/santoshyadavdev/angular-snippets/commits?author=nartc" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://blog.hien.page"><img src="https://avatars.githubusercontent.com/u/8808535?v=4?s=100" width="100px;" alt="Pham Huu Hien"/><br /><sub><b>Pham Huu Hien</b></sub></a><br /><a href="https://github.com/santoshyadavdev/angular-snippets/commits?author=phhien203" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://nelsonguti.dev/"><img src="https://avatars.githubusercontent.com/u/62297014?v=4?s=100" width="100px;" alt="Nelson Gutierrez"/><br /><sub><b>Nelson Gutierrez</b></sub></a><br /><a href="https://github.com/santoshyadavdev/angular-snippets/commits?author=nelsongutidev" title="Documentation">📖</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/lucioaimar"><img src="https://avatars.githubusercontent.com/u/64326713?v=4?s=100" width="100px;" alt="Lucio Aimar"/><br /><sub><b>Lucio Aimar</b></sub></a><br /> <a href="https://github.com/santoshyadavdev/angular-snippets/commits?author=lucioaimar" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/lucioaimar"><img src="https://avatars.githubusercontent.com/u/64326713?v=4?s=100" width="100px;" alt="Lucio Aimar"/><br /><sub><b>Lucio Aimar</b></sub></a><br /><a href="https://github.com/santoshyadavdev/angular-snippets/commits?author=lucioaimar" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/deepakrudrapaul"><img src="https://avatars.githubusercontent.com/u/25549935?v=4?s=100" width="100px;" alt="Deepak Rudra Paul"/><br /><sub><b>Deepak Rudra Paul</b></sub></a><br /><a href="https://github.com/santoshyadavdev/angular-snippets/commits?author=deepakrudrapaul" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
