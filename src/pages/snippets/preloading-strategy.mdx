@@ -33,6 +33,44 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
+
+//StandAlone API version
+
+//Lazy loading another routing config
+export const routes: Routes = [
+  {
+    path: "contact",
+    loadChildren: () =>
+      import("./contact/contact.routes").then((m) => m.CONTACT_ROUTES),
+  },
+  {
+    path: "about",
+    loadChildren: () =>
+      import("./about/about.routes").then((m) => m.ABOUT_ROUTES),
+  },
+];
+
+//Directly lazy loading a standalone component
+export const routes: Routes = [
+  {
+    path: "contact",
+    loadComponent: () =>
+      import("./contact/contact.component").then((m) => m.ContactComponent),
+  },
+  {
+    path: "about",
+    loadComponent: () =>
+      import("./about/about.component").then((m) => m.AboutComponent),
+  },
+];
+
+//In your main.ts add:
+bootstrapApplication(AppComponent, {
+  providers: [
+    importProvidersFrom(RouterModule.forRoot(routes))
+  ]
+})
+
 ```
 
 ### Preload all the modules
@@ -49,6 +87,16 @@ In this way, all the modules of our application will be loaded at once and ready
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
+
+//StandAlone API version
+//In your main.ts add:
+bootstrapApplication(AppComponent, {
+  providers: [
+    importProvidersFrom(RouterModule.forRoot(routes, {
+      preloadingStrategy: PreloadAllModules
+    })),
+  ]
+})
 ```
 
 ### Customised module preloading
@@ -92,6 +140,16 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
+
+//StandAlone API version
+//In your main.ts add:
+bootstrapApplication(AppComponent, {
+  providers: [
+    importProvidersFrom(RouterModule.forRoot(routes, {
+      preloadingStrategy: PreloadingStrategyService
+    })),
+  ]
+})
 ```
 
 ### Using ngx-quicklink
@@ -111,4 +169,29 @@ import { QuicklinkStrategy } from "ngx-quicklink";
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
+
+//StandAlone API version
+//In your main.ts add:
+import { quicklinkProviders, QuicklinkStrategy } from 'ngx-quicklink';
+
+bootstrapApplication(AppComponent, {
+  providers: [
+    importProvidersFrom(RouterModule.forRoot(routes, {
+      preloadingStrategy: QuicklinkStrategy
+    })),
+    quicklinkProviders
+  ]
+})
+
+// Import the QuicklinkDirective in all your standalone components that use preloading:
+import { RouterModule } from '@angular/router';
+import { QuicklinkDirective } from 'ngx-quicklink';
+
+@Component({
+  standalone: true,
+  imports: [RouterModule, QuicklinkDirective],
+    template: `
+    <a routerLink="/form">Form</a>
+  `,
+})
 ```
