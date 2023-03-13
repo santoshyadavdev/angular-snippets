@@ -66,11 +66,8 @@ export const routes: Routes = [
 
 //In your main.ts add:
 bootstrapApplication(AppComponent, {
-  providers: [
-    importProvidersFrom(RouterModule.forRoot(routes))
-  ]
-})
-
+  providers: [provideRouter(routes)],
+});
 ```
 
 ### Preload all the modules
@@ -91,12 +88,8 @@ export class AppRoutingModule {}
 //StandAlone API version
 //In your main.ts add:
 bootstrapApplication(AppComponent, {
-  providers: [
-    importProvidersFrom(RouterModule.forRoot(routes, {
-      preloadingStrategy: PreloadAllModules
-    })),
-  ]
-})
+  providers: [provideRouter(routes, withPreloading(PreloadAllModules))],
+});
 ```
 
 ### Customised module preloading
@@ -107,8 +100,8 @@ We can choose which modules to load first, so the most used modules will already
 export class PreloadingStrategyService implements PreloadingStrategy {
   private preloadedModules: string[] = [];
 
-  preload(route: Route, load: () => Observable<any>): Observable<unknown> {
-    if (route.data && route.data["preload"] && route.path) {
+  preload(route: Route, load: () => Observable): Observable {
+    if (route.data && route.data['preload'] && route.path) {
       this.preloadedModules.push(route.path);
       return load();
     } else {
@@ -144,12 +137,8 @@ export class AppRoutingModule {}
 //StandAlone API version
 //In your main.ts add:
 bootstrapApplication(AppComponent, {
-  providers: [
-    importProvidersFrom(RouterModule.forRoot(routes, {
-      preloadingStrategy: PreloadingStrategyService
-    })),
-  ]
-})
+  providers: [provideRouter(routes, withPreloading(PreloadingStrategyService))],
+});
 ```
 
 ### Using ngx-quicklink
@@ -176,9 +165,7 @@ import { quicklinkProviders, QuicklinkStrategy } from 'ngx-quicklink';
 
 bootstrapApplication(AppComponent, {
   providers: [
-    importProvidersFrom(RouterModule.forRoot(routes, {
-      preloadingStrategy: QuicklinkStrategy
-    })),
+    provideRouter(routes, withPreloading(QuicklinkStrategy)),
     quicklinkProviders
   ]
 })
