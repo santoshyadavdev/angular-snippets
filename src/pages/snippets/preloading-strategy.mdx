@@ -97,6 +97,9 @@ bootstrapApplication(AppComponent, {
 We can choose which modules to load first, so the most used modules will already be loaded.
 
 ```typescript
+@Injectable({
+  providedIn:'root'
+})
 export class PreloadingStrategyService implements PreloadingStrategy {
   private preloadedModules: string[] = [];
 
