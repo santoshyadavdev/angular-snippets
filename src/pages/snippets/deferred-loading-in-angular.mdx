@@ -1,0 +1,64 @@
+---
+title: What is Deferred Loading in Angular
+description: "Deferred Loading in Angular"
+tags: ["angular", "Deferred Loading", "Zoneless angular"]
+pubDate: Jul 22, 2023
+contributedBy: "@pawanpatil08"
+---
+
+as a part of our ongoing work on implementing the Signals RFC,
+we’ve known that the existing zone-based control flow directives would not be able to function in zoneless applications.
+We will need to implement reactive control flow for zoneless applications.
+We considered modifying the existing control flow directives to support zoneless applications as well,
+
+#### Goals:
+
+- Make deferred loading in Angular predictable and ergonomic for all developers
+- Reduce initial page load time due to smaller initial bundle sizes
+  8 Support deferred loading of directives & pipes as well as components
+- Introduce new patterns to allow developers to build applications that leverage deferred loading
+- Integrate deferred loaded primitive with hydration, so that developers can gain maximum benefits
+
+### Deferred blocks
+
+```typescript
+{#defer}
+  <calendar-cmp />
+{/defer}
+```
+
+### on and when
+
+```typescript
+{#defer when cond}
+  <calendar-cmp />
+{/defer}
+```
+
+```typescript
+{#defer on interaction, timer(5s)}
+  <calendar-cmp />
+{/defer}
+```
+
+### :loading blocks
+
+```typescript
+{#defer}
+  <calendar-cmp />
+{:loading}
+  <div class="loading">Loading the calendar...</div>
+{/defer}
+```
+
+### :placeholder blocks
+
+```typescript
+{#defer when cond}
+  <calendar-cmp />
+{:placeholder minimum 500ms}
+  <img src="placeholder.png" />
+{/defer}
+```
+
+Will see you Built-In Control Flow in next snippets

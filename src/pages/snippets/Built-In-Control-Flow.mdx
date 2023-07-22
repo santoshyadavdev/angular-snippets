@@ -1,0 +1,83 @@
+---
+title: Build in control flow upcoming Angular
+description: "Build in control"
+tags: ["angular", "Deferred Loading", "angular 16"]
+pubDate: Jul 22, 2023
+contributedBy: "@pawanpatil08"
+---
+
+#### Goals:
+
+The new syntax for template control flow has several major goals:
+
+- Syntactically similar to JavaScript's control flow statement syntax.
+- Syntactically distinct from HTML syntax.
+- Works across multiple templates (if-elseif-else, switch-case-default), including template type-checking.
+- Flexible syntax allowing customization for each use case (if vs for vs switch).
+  Address common pain points.
+- It must be possible to automatically migrate virtually all existing control flow usage to the new syntax.
+
+### Conditional control flow uses blocks with the keywords if and else:
+
+```typescript
+{#if cond.expr}
+  Main case was true!
+{:else if other.expr}
+  Extra case was true!
+{:else}
+  False case!
+{/if}
+```
+
+### Switch control flow uses blocks with the keywords switch, case, and default:
+
+```typescript
+{#switch cond.kind}
+  {:case x}
+    X case
+  {:case y}
+    Y case
+  {:case z}
+    Z case
+  {:default}
+    No case matched
+{/switch}
+```
+
+### Loop control flow uses blocks with the keywords for and empty:
+
+```typescript
+{#for item of items; track item.id}
+  {{ item }}
+{:empty}
+  There were no items in the list.
+{/for}
+```
+
+### Detailed Design
+
+```typescript
+{#if cond.expr}
+  <child-cmp />
+{/if}
+```
+
+### if block - conditionals
+
+```typescript
+{#if a > b}
+  {{a}} is greater than {{b}}
+{/if}
+```
+
+```typescript
+{#if a > b}
+  {{a}} is greater than {{b}}
+{:else if b > a}
+  {{a}} is less than {{b}}
+{:else}
+  {{a}} is equal to {{b}}
+{/if}
+```
+
+Will see you Built-In Control Flow in next snippets
